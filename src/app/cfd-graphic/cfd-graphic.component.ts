@@ -13,34 +13,78 @@ export class CfdGraphicComponent implements OnInit {
   ngOnInit() {
     Chart.register(...registerables);
 
+    const colors = {
+      green: {
+        fill: '#e0eadf',
+        stroke: '#5eb84d',
+      },
+      lightBlue: {
+        stroke: '#6fccdd',
+      },
+      darkBlue: {
+        fill: '#92bed2',
+        stroke: '#3282bf',
+      },
+      purple: {
+        fill: '#8fa8c8',
+        stroke: '#75539e',
+      },
+    };
+
+    const loggedIn = [26, 36, 42, 38, 40, 30, 12];
+    const available = [34, 44, 33, 24, 25, 28, 25];
+    const availableForExisting = [16, 13, 25, 33, 40, 33, 45];
+    const unavailable = [5, 9, 10, 9, 18, 19, 20];
+    const xData = [13, 14, 15, 16, 17, 18, 19];
+
     var cfd = new Chart("cfd", {
       type: 'line',
       data: {
-        labels: ["Sprint 1", "Sprint 2", "Sprint 3"],
+        labels: xData,
         datasets: [{
-          label: "Desenvolvimento",
-          data: [12, 19, 3, 5, 2, 3],
-          borderColor: 'red',
-          backgroundColor: 'rgba(255, 159, 64, 0.2)',
-          fill: 1
-        },
-        {
-          label: "Testes",
-          data: [12, 19, 3, 5, 2, 3],
-          borderColor: 'yellow',
-          backgroundColor: 'yellow',
-          fill: 1
-        }
-        ]
-      },
+          label: "Unavailable",
+          fill: true,
+          backgroundColor: colors.purple.fill,
+          pointBackgroundColor: colors.purple.stroke,
+          borderColor: colors.purple.stroke,
+          //pointHighlightStroke: colors.purple.stroke,
+          borderCapStyle: 'butt',
+          data: unavailable,
+
+        }, {
+          label: "Available for Existing",
+          fill: true,
+          backgroundColor: colors.darkBlue.fill,
+          pointBackgroundColor: colors.darkBlue.stroke,
+          borderColor: colors.darkBlue.stroke,
+          //pointHighlightStroke: colors.darkBlue.stroke,
+          borderCapStyle: 'butt',
+          data: availableForExisting,
+        }, {
+          label: "Available",
+          fill: true,
+          backgroundColor: colors.green.fill,
+          pointBackgroundColor: colors.lightBlue.stroke,
+          borderColor: colors.lightBlue.stroke,
+          //pointHighlightStroke: colors.lightBlue.stroke,
+          borderCapStyle: 'butt',
+          data: available,
+        }, {
+          label: "Logged In",
+          fill: true,
+          backgroundColor: colors.green.fill,
+          pointBackgroundColor: colors.green.stroke,
+          borderColor: colors.green.stroke,
+          //pointHighlightStroke: colors.green.stroke,
+          data: loggedIn,
+        }]
+      },      
       options: {
+        responsive: true,
         scales: {
-          y: {
+          yAxes: {
             stacked: true
           }
-        },
-        interaction: {
-          intersect: false,
         },
       },
     });
