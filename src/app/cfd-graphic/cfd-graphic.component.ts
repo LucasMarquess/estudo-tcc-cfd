@@ -40,10 +40,10 @@ export class CfdGraphicComponent implements OnInit {
     };
 
     const labels = ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4", "Sprint 5", "Sprint 6", "Sprint 7", "Sprint 8", "Sprint 9", "Sprint 10"];
-    const testeData = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
-    const devData = [5, 10, 20, 60, 70, 80, 90, 10, 32, 38];
-    const prontoData = [0, 5, 10, 10, 10, 11, 12, 14, 20, 22];
-    const backlodData = [50, 50, 80, 90, 100, 100, 100, 100, 100, 100];
+    const backlogData = [20, 30, 40, 50, 60, 70, 80, 90, 100, 110];
+    const desenvolvimentoData = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+    const testData = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95];
+    const prontoData = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 
     const cfd = new Chart("cfd", {
       type: 'line',
@@ -56,7 +56,7 @@ export class CfdGraphicComponent implements OnInit {
           pointBackgroundColor: colors.darkBlue.stroke,
           borderColor: colors.darkBlue.stroke,
           borderCapStyle: 'butt',
-          data: testeData,
+          data: testData,
 
         }, {
           label: "Desenvolvimneto",
@@ -65,7 +65,7 @@ export class CfdGraphicComponent implements OnInit {
           pointBackgroundColor: colors.yellow.stroke,
           borderColor: colors.yellow.stroke,
           borderCapStyle: 'butt',
-          data: devData,
+          data: desenvolvimentoData,
         },
         {
           label: "Pronto",
@@ -81,7 +81,7 @@ export class CfdGraphicComponent implements OnInit {
           backgroundColor: colors.red.fill,
           pointBackgroundColor: colors.red.stroke,
           borderColor: colors.red.stroke,
-          data: backlodData,
+          data: backlogData,
         }]
       },
       options: {
